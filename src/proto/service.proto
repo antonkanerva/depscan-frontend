@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package gitlab;
+
+service GitLabService {
+  rpc GetDependencies (GetDependenciesRequest) returns (GetDependenciesResponse);
+}
+
+message GetDependenciesRequest { }
+
+message GetDependenciesResponse {
+  repeated Project projects = 1;
+}
+
+message Project {
+  string name = 1;
+  string language = 2;
+  repeated Dependency dependencies = 3;
+}
+
+message Dependency {
+  string name = 1;
+  string current_version = 2;
+  string latest_version = 3;
+  int32 lib_year = 4;
+}

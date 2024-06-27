@@ -14,19 +14,7 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import DependencyTable from "./components/DependencyTable";
 import { getDependencies } from "./service";
-
-interface Dependency {
-  name: string;
-  currentVersion: string;
-  latestVersion: string;
-  libYear: number;
-}
-
-interface Project {
-  name: string;
-  language: string;
-  dependencies: Dependency[];
-}
+import type { Project } from "./types";
 
 const App: React.FC = () => {
   const [accessToken, setAccessToken] = useState("");
@@ -51,8 +39,7 @@ const App: React.FC = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      // const result = await getDependencies(accessToken);
-      const result = await getDependencies();
+      const result = await getDependencies(accessToken);
       setProjects(result);
     } catch (error) {
       console.error("Error fetching dependencies:", error);

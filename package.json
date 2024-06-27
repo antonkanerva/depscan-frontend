@@ -1,11 +1,11 @@
 {
   "name": "depscan-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc --noEmit --skipLibCheck --excludeFiles src/proto/gen/**/* && vite build",
     "preview": "vite preview",
     "format": "biome format --write ./src && biome check --write ./src",
     "check": "biome check ./src",
@@ -16,17 +16,24 @@
     "@bufbuild/connect-web": "^0.13.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@grpc/grpc-js": "^1.10.10",
     "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
+    "google-protobuf": "^3.21.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.2",
+    "@biomejs/biome": "1.8.3",
+    "@bufbuild/protobuf": "^1.10.0",
+    "@bufbuild/protoc-gen-connect-es": "^0.13.0",
+    "@bufbuild/protoc-gen-es": "^1.10.0",
+    "@types/google-protobuf": "^3.15.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "protoc-gen-ts": "^0.8.7",
     "typescript": "^5.5.2",
-    "vite": "^5.3.1"
+    "vite": "^5.3.2"
   }
 }
